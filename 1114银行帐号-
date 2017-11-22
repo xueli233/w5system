@@ -1,0 +1,27 @@
+```
+			addBank () {
+				var that = this;
+				var jsons = {
+          InterID: that.bkid,//	ID	string	
+          UserID:userid,//	用户ID	int	
+          UserName:UserName,//	用户名	string	
+				};
+				$.ajax({
+					url: 'http://116.62.171.144/post/index.php',
+					type: 'POST', //GET
+					async: true, //或false,是否异步
+					data: {
+						datas: jsons,
+						method: "CPHH.PC.BaseInfo.Bank.Add"
+					},
+					timeout: 5000, //超时时间
+					success: function(data, textStatus, jqXHR) {
+            console.log(2333,data)
+						var obj = eval('(' + data + ')');
+						var datas = JSON.parse(obj.Datas);
+						var data = datas.Data;
+						// that.yhlbs = data; //
+					}
+				})
+			},
+```
